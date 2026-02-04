@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Will You Be My Valentine?</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 35px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      z-index: 2;
+      animation: pop 0.5s ease;
+      max-width: 350px;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    h1 {
+      color: #ff4d6d;
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .photo {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    .unlock {
+      font-size: 1.3rem;
+      color: #ff4d6d;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      margin: 8px;
+      transition: all 0.2s ease;
+    }
+
+    #yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #no {
+      background: #ddd;
+      position: absolute;
+    }
+
+    .heart {
+      position: absolute;
+      color: rgba(255,255,255,0.7);
+      font-size: 20px;
+      animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      50% { opacity: 1; }
+      100% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+      }
+    }
+
+    iframe { display: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Lover - Taylor Swift -->
+  <iframe 
+    src="https://www.youtube.com/embed/cn1v8f_3C3o?autoplay=1&mute=1&loop=1&playlist=cn1v8f_3C3o"
+    allow="autoplay">
+  </iframe>
+
+  <div class="card">
+    <img src="us.jpg" alt="Us ❤️" class="photo">
+    <h1>Sanika 💖</h1>
+    <p>Will you be my Valentine? 🌹</p>
+    <button id="yes" onclick="yesClicked()">Yes 💘</button>
+    <button id="no" onmouseover="moveNo()">No 🙈</button>
+  </div>
+
+  <script>
+    function yesClicked() {
+      document.body.innerHTML = `
+        <div class="card">
+          <img src="us.jpg" class="photo">
+          <h1>You’re my Lover 💕</h1>
+          <p>
+            This love is ours 🥹<br>
+            Happy Valentine’s Day, Sanika 💖
+          </p>
+          <div class="unlock">🍷 Dinner date unlocked 🍽️✨</div>
+        </div>
+      `;
+    }
+
+    function moveNo() {
+      const noBtn = document.getElementById('no');
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      noBtn.style.left = x + 'px';
+      noBtn.style.top = y + 'px';
+    }
+
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '💖';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 300);
+
+    document.addEventListener('click', () => {
+      const iframe = document.querySelector('iframe');
+      iframe.src = iframe.src.replace('&mute=1', '&mute=0');
+    }, { once: true });
+  </script>
+
+</body>
+</html>
