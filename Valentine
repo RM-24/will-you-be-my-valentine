@@ -107,7 +107,7 @@
   </iframe>
 
   <div class="card">
-    <img src="us.jpg" alt="Us ❤️" class="photo">
+    <img src="us.jpg.jpeg" alt="Us ❤️" class="photo">
     <h1>Sanika 💖</h1>
     <p>Will you be my Valentine? 🌹</p>
     <button id="yes" onclick="yesClicked()">Yes 💘</button>
@@ -118,7 +118,7 @@
     function yesClicked() {
       document.body.innerHTML = `
         <div class="card">
-          <img src="us.jpg" class="photo">
+          <img src="us.jpg.jpeg" class="photo">
           <h1>You’re my Lover 💕</h1>
           <p>
             This love is ours 🥹<br>
